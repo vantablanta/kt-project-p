@@ -1,9 +1,15 @@
 <ul *ngFor="let quote of quotes">
-    <li>{{quote.text}}
-        <button class=" btn btn-success m-4">{{quote.upvotes}}</button>
-        <button class="btn btn-danger m-4">{{quote.downvotes}}</button>
-    </li>
-    
-    
-    
+    <div *ngIf="quote.id == 1 then highlight else noHighlight"></div>
+    <ng-template #highlight>
+        <li appHighlight>{{quote.text}}
+            <button class=" btn btn-success ms-4">{{quote.upvotes}}</button>
+            <button class="btn btn-danger ms-4">{{quote.downvotes}}</button>
+        </li>    
+    </ng-template>
+    <ng-template #noHighlight>
+        <li>{{quote.text}}
+            <button class=" btn btn-success ms-4">{{quote.upvotes}}</button>
+            <button class="btn btn-danger ms-4">{{quote.downvotes}}</button>
+        </li>
+    </ng-template>  
 </ul>
